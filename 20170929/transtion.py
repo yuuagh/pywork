@@ -28,41 +28,31 @@ def getTargetData(fname):
     str         = re.sub(r'\.\.>', '..', str)
 
     # 取CDS到protein_id="xxxx"之间内容
-    pattern     = r'CDS.*?protein_id=".*?".*?gene=".*?"'
+    pattern     = r'CDS.*?protein_id=".*?".*?translation=".*?"'
     p           = re.compile(pattern, re.S|re.I)
     result      = p.findall(str)
 
     
     # 得到目标字符串 得到 "xxx..xxx protein_id里面内容"
-    newpattern  = r'([\d]+?\.\.[\d]+,[\d]+?\.\.[\d]+,?[\d]+?\.\.[\d]+|[\d]+?\.\.[\d]+,?[\d]+?\.\.[\d]+|[\d]+?\.\.[\d]+).*protein_id="(.+?)".*gene="(.+?)"'
+    newpattern  = r'([\d]+?\.\.[\d]+,[\d]+?\.\.[\d]+,?[\d]+?\.\.[\d]+|[\d]+?\.\.[\d]+,?[\d]+?\.\.[\d]+|[\d]+?\.\.[\d]+).*protein_id="(.+?)".*gene="(.+?)".*translation="(.+?)"'
     p2 = re.compile(newpattern, re.S|re.I)
     # 数据存入字典中
     dic     = {}
     geneDic = {}
+    translationDic = {}
     for unit in result:
-        result2         = p2.findall(unit)
-        value           = re.split(',', result2[0][0])
-        key             = result2[0][1]
-        dic[key]        = value
-        geneDic[key]    = result2[0][2]
+        result2             = p2.findall(unit)
+        value               = re.split(',', result2[0][0])
+        key                 = result2[0][1]
+        dic[key]            = value
+        geneDic[key]        = result2[0][2]
+        translationDic[key] = result2[0][3]
     
-    return (dic, geneDic)
-
-# 获得替换的内容
-def getContent(fname):
-    tf          = open(fname + '.fasta')
-    content     = tf.read()
-    # 删除头部和换行符
-    content     = re.sub(r'.+\.', '', content)
-    content     = re.sub(r'\n', '', content)
-    tf.close()
-    return content
+    return (dic, geneDic, translationDic)
 
 def getAllData2(dirname, fname, name):
-    (dic, geneDic)  = getTargetData(fname)
-    content         = getContent(fname)
-    fl              = open(dirname + '\\' + name + '.txt', 'wb')
-    length          = len(content)
+    (dic, geneDic, translationDic)  = getTargetData(fname)
+    fl                              = open(dirname + '\\' + name + '.fasta', 'wb')
     for unit in dic:
         pt = ''
         for k in dic[unit]:
@@ -72,24 +62,12 @@ def getAllData2(dirname, fname, name):
         if lh > 0:
             pt = pt[0:lh - 1]
 
-        fl.write('name = ' + name + ', protein_id = ' + unit + ', ' + 'gene = ' + geneDic[unit] + ', position = ' + pt + ":\n")
+        fl.write('>name = ' + name + ', protein_id = ' + unit + ', ' + 'gene = ' + geneDic[unit] + ', position = ' + pt + ":\n")
+        tcontent = translationDic[unit]
+        # 去除回车和空格
+        tcontent = tcontent.replace(' ', '').replace('\n', '')
 
-        for k in dic[unit]:
-            # 字符串 content 是从0的下标开始
-            value   = re.split(r'\.\.', k)
-            bg      = int(value[0]) - 1 
-            ed      = int(value[1]) - 1
-            if bg > length - 1:
-                bg = length - 1
-                print 'begin beyond the max length'
-
-            if ed > length - 1:
-                print 'end beyond the max length' + ', length = ' + str(length) + ', ed = ' + str(ed)
-                ed = length - 1
-
-            final   = content[bg : ed]
-            fl.write(final)
-
+        fl.write(tcontent)
         fl.write("\n")
 
     fl.close()
@@ -111,15 +89,15 @@ def getPackageData():
     curfile = os.path.dirname(os.path.realpath(__file__)) 
     names   = getPath()
     # make dir
-    mkdir(curfile + '\\result')
-    shutil.rmtree(curfile + '\\result')
-    mkdir(curfile + '\\result')
+    mkdir(curfile + '\\gb')
+    shutil.rmtree(curfile + '\\gb')
+    mkdir(curfile + '\\gb')
     
-    log     = open(curfile + '\\log.txt', 'wb')
-    log.write('result path: ' + curfile + '\\result' + '\n')
+    log     = open(curfile + '\\gblog.txt', 'wb')
+    log.write('gb path: ' + curfile + '\\result' + '\n')
     for name in names:
         try:
-            getAllData2(curfile + '\\result', curfile + '\\source\\' + name, name)
+            getAllData2(curfile + '\\gb', curfile + '\\source\\' + name, name)
             print('analysis id = ' + name + ',success')
             log.write('analysis id = ' + name + ',success' + '\n')
         except Exception, e:
