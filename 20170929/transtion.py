@@ -28,11 +28,10 @@ def getTargetData(fname):
     str         = re.sub(r'\.\.>', '..', str)
 
     # 取CDS到protein_id="xxxx"之间内容
-    pattern     = r'CDS.*?protein_id=".*?".*?translation=".*?"'
+    pattern     = r'CDS.*?protein_id=".*?".*?gene=".*?".*?translation=".*?"'
     p           = re.compile(pattern, re.S|re.I)
     result      = p.findall(str)
 
-    
     # 得到目标字符串 得到 "xxx..xxx protein_id里面内容"
     newpattern  = r'([\d]+?\.\.[\d]+,[\d]+?\.\.[\d]+,?[\d]+?\.\.[\d]+|[\d]+?\.\.[\d]+,?[\d]+?\.\.[\d]+|[\d]+?\.\.[\d]+).*protein_id="(.+?)".*gene="(.+?)".*translation="(.+?)"'
     p2 = re.compile(newpattern, re.S|re.I)
