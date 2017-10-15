@@ -1,0 +1,14 @@
+result path: e:\pywork\pywork\20171015\1\result
+analysis id = KJ788290,success
+analysis id = KT898813,success
+analysis id = KY818915,success
+analysis id = NC_014570,success
+analysis id = NC_008155,success
+analysis id = NC_016927,success
+analysis id = NC_017609,success
+analysis id = NC_025652,success
+analysis id = KX507360,success
+analysis id = NC_024019,success
+analysis id = NC_019616,success
+analysis id = NC_030770,success
+analysis id = NC_021762,success
