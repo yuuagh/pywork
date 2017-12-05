@@ -1,0 +1,2 @@
+result path: e:\zhuomianqianyi\xlc\20171024\1205\result
+analysis id = AP014937,success
