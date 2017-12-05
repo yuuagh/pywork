@@ -18,7 +18,7 @@ if __name__ == '__main__':
             result.write(line)
         else:
             #总长度为3的倍数不处理
-            if len(line) % 3 == 0:
+            if len(line) % 3 != 0:
                 result.write(line)
                 continue
             else:
