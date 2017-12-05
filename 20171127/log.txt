@@ -1,0 +1,3 @@
+result path: c:\Users\Administrator\Desktop\xlc\20171024\1127\result
+analysis id = NC_031428,success
+analysis id = HF677508,success
