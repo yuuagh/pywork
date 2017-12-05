@@ -1,0 +1,2 @@
+result path: e:\zhuomianqianyi\xlc\20171024\1204\result
+analysis id = supplementcds,success
