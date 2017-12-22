@@ -1,0 +1,55 @@
+HTTP/1.1 100 Continue
+
+POST /gmfservelt/upServlet?user=100 HTTP/1.1
+Host: 114.55.250.143:8080
+User-Agent: curl/7.54.1
+Accept: */*
+Content-Length: 1184
+Expect: 100-continue
+Content-Type: multipart/form-data; boundary=------------------------7ffa50373f38e364
+
+--------------------------7ffa50373f38e364
+Content-Disposition: form-data; name="image"; filename="100.jpg"
+Content-Type: image/jpeg
+
+.PNG
+.
+...IHDR.......".....v.9<....PLTE....L..J..f..:e.T..<g.Du.7_.d..?k.d..a..5[.8`.6\.Z..P..^..V..?l.c..Y..Z..Ap.d..Ap.>j.<f.`..Y..9a.U..Hz._..\..7].Z..;d.]..W..P..@m.d..Gy.7].6\.U..T..Cs.6\.e.............u....................{..................................................T..+k.%`..........|..e..P..)p..L..Y..I~.Ty.Iqo....................q...........V..g........t..s..Z..R..B}.X..Q..%i.E{..U..Q.....................................b.....Y........_..~..k..J..`..X..@z.M..C..9q..^.<u..Cse./....4tRNS.@.... ...meW@..............wskWPPG770+ ........``G.!.q+....IDAT(.e..ZBA...............`wP"............|3..^..).. !........
+..|.......[M.Ga../....F..+.....Z.....@.w)...1.B,...6tj.....}.0..nt.....5.kI..6&.S..y.).S...-Nz....I./`.....1e?.....q....../..U....Y...h.......2....b.' o*9......D{\.Y.=..t;...v...}pi.....;..9\.y&..Q...P,.F......#.>..~N...;..%."^i:j....C.B`$...{....-!..?4.K...;.grZ.....4.._m%[...Vb.c.R7..	..m-.V.r .....s.....{i.....'..6.(..*.....L*.J.UY...e2Y!...9a.1.YA.....IEND.B`.
+--------------------------7ffa50373f38e364--
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Fri, 22 Dec 2017 06:47:48 GMT
+
+{"itype":0,"msg":"http://114.55.250.143:8080/gmfservelt/udata/100/100.jpg"}
+HTTP/1.1 100 Continue
+
+POST /gmfservelt/upServlet?user=100 HTTP/1.1
+Host: 114.55.250.143:8080
+User-Agent: curl/7.54.1
+Accept: */*
+Content-Length: 1184
+Expect: 100-continue
+Content-Type: multipart/form-data; boundary=------------------------7ffa50373f38e364
+
+--------------------------7ffa50373f38e364
+Content-Disposition: form-data; name="image"; filename="100.jpg"
+Content-Type: image/jpeg
+
+.PNG
+.
+...
+IHDR.......".....v.9<....PLTE....L..J..f..:e.T..<g.Du.7_.d..?k.d..a..5[.8`.6\.Z..P..^..V..?l.c..Y..Z..Ap.d..Ap.>j.<f.`..Y..9a.U..Hz._..\..7].Z..;d.]..W..P..@m.d..Gy.7].6\.U..T..Cs.6\.e.............u....................{..................................................T..+k.%`..........|..e..P..)p..L..Y..I~.Ty.Iqo....................q...........V..g........t..s..Z..R..B}.X..Q..%i.E{..U..Q.....................................b.....Y........_..~..k..J..`..X..@z.M..C..9q..^.<u..Cse./....4tRNS.@.... ...meW@..............wskWPPG770+ ........``G.!.q+....IDAT(.e..ZBA...............`wP"........
+....|3..^..).. !........
+..|.......[M.Ga../....F..+.....Z.....@.w)...1.B,...6tj.....}.0..nt.....5.kI..6&.S..y.).S...-Nz....I./`.....1e?.....q....../..U....Y...h.......2....b.'
+ o*9......D{\.Y.=..t;...v...}pi.....;..9\.y&..Q...P,.F......#.>..~N...;..%."^i:j....C.B`$...{....-!..?4.K...;.grZ.....4.._m%[...Vb.c.R7..	..m-.V.r .....s.....{i.....'..6.(..*.....L*.J.UY...e2Y!...9a.1.YA.....IEND.B`.
+--------------------------7ffa50373f38e364--
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Fri, 22 Dec 2017 06:47:48 GMT
+
+{"itype":0,"msg":"http://114.55.250.143:8080/gmfservelt/udata/100/100.jpg"}
