@@ -184,10 +184,12 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
       
   def deal_post_data(self):
     boundary = self.headers.plisttext.split("=")[1]
+    boundary = boundary.strip()
     remainbytes = int(self.headers['content-length'])
     line = self.rfile.readline()
     remainbytes -= len(line)
-    if not boundary in line:
+
+    if not (boundary in line):
       return (False, "Content NOT begin with boundary")
     line = self.rfile.readline()
     remainbytes -= len(line)
