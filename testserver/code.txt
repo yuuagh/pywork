@@ -1,2 +1,2 @@
-curl http://114.55.250.143:8080/gmfservelt/upServlet?user=100 -F "image=@100.jpg"
-curl -o 100.jpg http://114.55.250.143:8080/gmfservelt/down?user=100
+curl http://114.55.250.143:8080/gmfservelt/upServlet?user=1001011 -F "image=@1001011.jpg"
+curl -o 1001011.jpg http://114.55.250.143:8080/gmfservelt/down?user=1001011
